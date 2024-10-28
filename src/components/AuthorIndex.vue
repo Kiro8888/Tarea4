@@ -3,28 +3,21 @@
     <div class="row">
       <div style="margin-top: 5%">
         <h2>{{title}}</h2>
-        <table>
-          <thead>
+        <table><thead>
             <tr>
               <th>Author</th>
               <th>Nationality</th>
               <th>Birth Year</th>
               <th>Fields</th>
-              <!-- <th>Books</th> -->
               <th class="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for='author in authors' :key="author.id">
+            <tr v-for='author in authors'>
               <td>{{author.author}}</td>
               <td>{{author.nationality}}</td>
               <td>{{author.birth_year}}</td>
               <td>{{author.fields}}</td>
-              <!-- <td>
-                <ul>
-                  <li v-for="book in author.books" :key="book.book_id">{{book.title}}</li>
-                </ul>
-              </td> -->
               <td>
                 <router-link class="button"
                   :to="'/author/show/'+author._id">Show</router-link>
@@ -76,4 +69,3 @@
     }
   };
   </script>
-  

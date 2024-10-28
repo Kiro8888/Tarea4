@@ -54,23 +54,21 @@
       this.allPublishers();
     },
     methods: {
-      // Obtener la lista de todos los editores
       allPublishers() {
-        fetch(this.url + '/.netlify/functions/publisherFindAll', {
+        fetch(this.url + '/.netlify/functions/publisher/publisherFindAll', {
           headers: { 'Accept': 'application/json' }
         })
           .then((response) => response.json())
           .then((items) => {
-            this.publishers = items;  // Asignar los datos de editores a la propiedad 'publishers'
+            this.publishers = items;  
           });
       },
-      // Eliminar un editor por ID
       deletePublisher(id) {
-        fetch(this.url + '/.netlify/functions/publisherDelete/' + id, {
+        fetch(this.url + '/.netlify/functions/publisher/publisherDelete/' + id, {
           headers: { 'Content-Type': 'application/json' },
           method: 'DELETE'
         }).then(() => {
-          this.allPublishers();  // Actualizar la lista de editores después de eliminar uno
+          this.allPublishers(); 
         });
       }
     }

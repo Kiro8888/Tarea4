@@ -2,7 +2,7 @@
 
 const rabbitPromise = require('./rabbitMQ');
 const headers = require('./headersCORS');
-const url = 'https://bookstore-rabbitmq.netlify.app/.netlify/functions/'  // Asumo que esta URL también aplica a autores
+const url = 'https://bookstore-rabbitmq.netlify.app/.netlify/functions/'
 
 exports.handler = async (event, context) => {
 
@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
 
   try {
     const channel = await rabbitPromise();
-    let message = await channel.get("authorstore", {'noAck': true});  // Cambié la cola a "authorstore"
+    let message = await channel.get("bookstore", {'noAck': true});  // Cambié la cola a "authorstore"
     
     while (message) {
       const request = JSON.parse(message.content.toString());
