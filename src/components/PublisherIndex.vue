@@ -55,7 +55,7 @@
     },
     methods: {
       allPublishers() {
-        fetch(this.url + '/.netlify/functions/publisher/publisherFindAll', {
+        fetch(this.url + '/.netlify/functions/publisherFindAll', {
           headers: { 'Accept': 'application/json' }
         })
           .then((response) => response.json())
@@ -64,7 +64,7 @@
           });
       },
       deletePublisher(id) {
-        fetch(this.url + '/.netlify/functions/publisher/publisherDelete/' + id, {
+        fetch(this.url + '/.netlify/functions/publisherDelete/' + id, {
           headers: { 'Content-Type': 'application/json' },
           method: 'DELETE'
         }).then(() => {
