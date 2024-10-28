@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
   try {
     
     const channel = await rabbitPromise();
-    const request = `{'method':'INSERT','body':${event.body}}`;
+    const request = `{"method":"INSERT","body":${event.body}}`;
     await channel.sendToQueue("bookstore", Buffer.from(request));
 
     return { statusCode: 200, headers, body: 'OK'};
