@@ -11,14 +11,13 @@ exports.handler = async (event, context) => {
 
   try {
     const client = await clientPromise;
-    const id = parseInt(event.path.split("/").reverse()[0]); // Asegúrate de que esto sea correcto para tus IDs
+    const id = parseInt(event.path.split("/").reverse()[0]);
     const data = JSON.parse(event.body);
-    console.log(event.body);
+    console.log(event.body)
 
-    // Cambié la colección de "books" a "authors"
-    await client.db("bookstore").collection("authors").updateOne({ _id: id }, { $set: data });
+    await client.db("bookstore").collection("authors").updateOne({_id:id},{$set:data});
 
-    return { statusCode: 200, headers, body: 'OK' };
+    return { statusCode: 200, headers, body: 'OK'};
   } catch (error) {
     console.log(error);
     return { statusCode: 422, headers, body: JSON.stringify(error) };
